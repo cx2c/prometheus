@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dingdingapi-ingress
+  namespace: monitoring
+  annotations:
+    #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    #nginx.ingress.kubernetes.io/secure-backends: "true"
+spec:
+  tls:
+  - hosts:
+    - k8s-dingding-dev.ntalker.com
+    secretName: ntalker-tls
+  rules:
+  - host: k8s-dingding-dev.ntalker.com
+    http:
+      paths:
+      - backend:
+          serviceName: dingdingapi-svc
+          servicePort: 80

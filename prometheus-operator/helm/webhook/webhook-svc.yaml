@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dingdingapi-svc
+  namespace: monitoring
+  labels:
+    app: dingdingapi
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: dingdingapi 
+  selector:
+    app: dingdingapi

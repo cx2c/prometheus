@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dingdingapi-deploy
+  namespace: monitoring
+  labels:
+    app: dingdingapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dingdingapi
+  template:
+    metadata:
+      labels:
+        app: dingdingapi
+    spec:
+      containers:
+      - name: dingdingapi
+        image: reg.xiaoneng.cn/k8s/webhook-dd:v1.1
+        resources:
+          limits:
+            cpu: "1"
+            memory: 512Mi
+          requests:
+            cpu: "200m"
+            memory: 128Mi
+        ports:
+        - containerPort: 8012
+          name: dingdingapi
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /v1/alertmanager/get
+            port: 8012
+            httpHeaders:
+            - name: X-Custom-Header
+              value: Awesome
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /v1/alertmanager/get
+            port: 8012
+            httpHeaders:
+            - name: X-Custom-Header
+              value: Awesome
+

@@ -1,0 +1,5 @@
+tmp/
+minikube-manifests/
+jsonnetfile.lock.json
+vendor/
+./auth
