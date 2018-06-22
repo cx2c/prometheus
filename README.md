@@ -1,7 +1,7 @@
 # Prometheus Operator --- Prometheus on Kubernetes
 ###### Prometheus Operator github 项目更新太快，此版本copy于 release 0.20，修复了很多坑，由于使用的helm方式安装，入门有难度
 
-#### [Helm官方文档](https://docs.helm.sh/) 很想尽，从charts 到template渲染，以及helm命令说的都很清楚
+#### [Helm官方文档](https://docs.helm.sh/) 很详尽，从charts 到template渲染，以及helm命令说的都很清楚
 
 # install prometheus on kubernetes 
 #### install namespace
